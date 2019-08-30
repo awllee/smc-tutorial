@@ -1,0 +1,23 @@
+language: r
+dist: xenial
+cache: packages
+branches:
+    only:
+        - master
+r_packages:
+    - rmarkdown
+    - xaringan
+    - DiagrammeR
+    - plotly
+
+script:
+    - Rscript -e 'rmarkdown::render("smc-tutorial.Rmd", output_dir="public")'
+
+deploy:
+    provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_PAT
+    on:
+        branch: master
+    local_dir: public
+    target_branch: gh-pages
