@@ -26,7 +26,10 @@ jobs:
         uses: r-lib/actions/setup-pandoc@v1
 
       - name: Build page
-        run: Rscript -e 'rmarkdown::render("smc-tutorial.Rmd", output_dir="public")'
+        run: |
+          mkdir public
+          cp smc-tutorial.Rmd public/smc-tutorial.Rmd
+          Rscript -e 'rmarkdown::render("public/smc-tutorial.Rmd")'
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
