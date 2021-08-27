@@ -28,7 +28,7 @@ jobs:
       - name: Build page
         run: |
           mkdir public
-          cp smc-tutorial.Rmd public/smc-tutorial.Rmd
+          cp smc-tutorial.Rmd particle_plots.R public/
           Rscript -e 'rmarkdown::render("public/smc-tutorial.Rmd")'
 
       - name: Deploy
