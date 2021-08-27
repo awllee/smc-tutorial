@@ -30,6 +30,7 @@ jobs:
           mkdir public
           cp smc-tutorial.Rmd particle_plots.R public/
           Rscript -e 'rmarkdown::render("public/smc-tutorial.Rmd")'
+          rm public/smc-tutorial.Rmd public/particle_plots.R
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
