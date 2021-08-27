@@ -1,6 +1,10 @@
+[![Build Status](https://github.com/awllee/smc-tutorial/workflows/build/badge.svg)](https://github.com/awllee/smc-tutorial/actions)
+
 # smc-tutorial
 
 A tutorial introducing Sequential Monte Carlo methods.
+
+https://awllee.github.io/smc-tutorial/smc-tutorial.html
 
 These are slides used in July 2019 at
 

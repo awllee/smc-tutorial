@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - main
+      - master
+
+name: build
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v1
+
+      - name: Install dependencies
+        run: R -e 'install.packages(c("rmarkdown","xaringan","DiagrammeR",
+          "plotly"))'
+
+      - name: Setup pandoc
+        uses: r-lib/actions/setup-pandoc@v1
+
+      - name: Build page
+        run: Rscript -e 'rmarkdown::render("smc-tutorial.Rmd", output_dir="public")'
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: public
